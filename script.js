@@ -506,25 +506,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     break;
 
                 case "ArrowRight": // Jump forward 30 seconds
-                    audioPlayer.currentTime += 30;
+                        audioPlayer.currentTime = Math.min(audioPlayer.currentTime + 30, audioPlayer.duration || audioPlayer.currentTime + 30);
                     break;
 
                 case "ArrowLeft": // Go back 30 seconds
-                    audioPlayer.currentTime -= 30;
+                        audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 30, 0);
                     break;
 
                 case "Equal": 
                 case "NumpadAdd": // Increase volume
-                    if (audioPlayer.volume < 1) {
-                        audioPlayer.volume = Math.min(audioPlayer.volume + 0.1, 1);
-                    }
+                        if (audioPlayer.volume < 1) {
+                            audioPlayer.volume = Math.min(audioPlayer.volume + 0.1, 1);
+                        }
+                        audioPlayer.volume = Math.max(0, Math.min(audioPlayer.volume, 1));
                     break;
 
                 case "Minus": 
                 case "NumpadSubtract": // Reduce volume
-                    if (audioPlayer.volume > 0) {
-                        audioPlayer.volume = Math.max(audioPlayer.volume - 0.1, 0);
-                    }
+                        if (audioPlayer.volume > 0) {
+                            audioPlayer.volume = Math.max(audioPlayer.volume - 0.1, 0);
+                        }
+                        audioPlayer.volume = Math.max(0, Math.min(audioPlayer.volume, 1));
                     break;
 
                 default:
@@ -545,13 +547,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (ctrlFastForward) {
             ctrlFastForward.addEventListener("click", function () {
-                audioPlayer.currentTime += 30;
+                audioPlayer.currentTime = Math.min(audioPlayer.currentTime + 30, audioPlayer.duration || audioPlayer.currentTime + 30);
             });
         }
 
         if (ctrlFastBackward) {
             ctrlFastBackward.addEventListener("click", function () {
-                audioPlayer.currentTime -= 30;
+                audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 30, 0);
             });
         }
 
@@ -560,6 +562,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (audioPlayer.volume < 1) {
                     audioPlayer.volume = Math.min(audioPlayer.volume + 0.1, 1);
                 }
+                audioPlayer.volume = Math.max(0, Math.min(audioPlayer.volume, 1));
             });
         }
 
@@ -568,6 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (audioPlayer.volume > 0) {
                     audioPlayer.volume = Math.max(audioPlayer.volume - 0.1, 0);
                 }
+                audioPlayer.volume = Math.max(0, Math.min(audioPlayer.volume, 1));
             });
         }
 
