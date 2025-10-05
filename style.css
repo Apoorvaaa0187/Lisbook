@@ -58,6 +58,87 @@ body.loading {
 } */
 
 /* Spinner container */
+/* Responsive header and logo fixes */
+/* Responsive header and logo fixes */
+.logo-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.logo-text img {
+  max-width: 40px;
+  height: auto;
+  display: block;
+}
+
+/* General mobile responsiveness */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100% !important;
+    padding: 0 8px;
+  }
+  .logo-text {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  #menu {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0;
+  }
+  .language-selector {
+    margin: 10px 0;
+    width: 100%;
+  }
+  .language-selector select {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+  h1, h2, h3, .page-title {
+    font-size: 1.2rem !important;
+  }
+  .book-card, .features-card, .playlist-card {
+    width: 100% !important;
+    margin: 8px 0;
+    font-size: 1rem;
+    padding: 8px;
+  }
+  .card-cover-container {
+    height: 8rem;
+  }
+  img, .card-cover-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  section {
+    padding: 8px !important;
+    box-shadow: none;
+  }
+  .faq-question, .faq-answer {
+    font-size: 1rem;
+  }
+  .play-pause-button {
+    width: 40px;
+    height: 40px;
+  }
+  .icon-action-btn-container {
+    margin-top: 16px;
+  }
+  .tooltip {
+    min-width: 100px;
+    font-size: 0.9rem;
+  }
+}
 
 /* .spinner-container {
   position: fixed;
